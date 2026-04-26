@@ -6,14 +6,20 @@ type LoginResponse = {
 };
 
 export class AuthService extends ApiService {
-  login(email: string, password: string) {
+  async login(email: string, password: string) {
     return this.post<LoginResponse>("/auth/login", {
       email,
       password,
     });
   }
 
-  me() {
+  async me() {
     return this.get("/auth/me");
   }
+
+  async refresh() {
+    return this.handleUnauthorized();
+  }
 }
+
+export const authService = new AuthService();
