@@ -1,26 +1,11 @@
 "use client";
-
-import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import Input from "@/components/ui/Input";
-import { useAuthStore } from "@/store/auth.store";
 
-import { useLogin } from "@/hooks/use-auth";
+import { useLogin } from "@/hooks/api/use-auth.hook";
 
-const loginSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email("Please enter a valid email")
-    .required("Email is required"),
-  password: yup
-    .string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Password is required"),
-});
-
-type LoginFormValues = yup.InferType<typeof loginSchema>;
+import { loginSchema, type LoginFormValues } from "./login.schema";
 
 const LoginForm = () => {
   const { mutateAsync: login, isPending: isLoggingIn, error: apiError } = useLogin();
