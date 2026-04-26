@@ -9,12 +9,20 @@ export const tokenManager = {
     return localStorage.getItem("refreshToken");
   },
 
+  setAccessToken: (token: string) => {
+    localStorage.setItem("accessToken", token);
+  },
+
+  setRefreshToken: (token: string) => {
+    localStorage.setItem("refreshToken", token);
+  },
+
   setTokens: (access: string, refresh: string) => {
     localStorage.setItem("accessToken", access);
     localStorage.setItem("refreshToken", refresh);
   },
 
-  clear: () => {
+  clearTokens: () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
   },

@@ -111,10 +111,10 @@ export class ApiService {
         }
       }
 
-      tokenManager.clear();
+      tokenManager.clearTokens();
       return false;
     } catch {
-      tokenManager.clear();
+      tokenManager.clearTokens();
       return false;
     }
   }
